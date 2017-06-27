@@ -1,0 +1,26 @@
+{
+  "name": "ts-modern-async",
+  "version": "0.0.1",
+  "description": "TypeScript ready async.js-like calls using promises.",
+  "main": "lib/index.js",
+  "module": "lib/index",
+  "typings": "lib/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilezek/node-ts-modern-async.git"
+  },
+  "keywords": [
+    "typescript",
+    "async",
+    "await"
+  ],
+  "author": "lilEzek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lilezek/node-ts-modern-async/issues"
+  },
+  "homepage": "https://github.com/lilezek/node-ts-modern-async#readme"
+}
