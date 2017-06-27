@@ -15,3 +15,9 @@ export async function map<T = any, V = any>(arr: T[], cb: (element: T) => Promis
   }
   return result;
 }
+
+export async function inmediate() {
+  return new Promise((resolve, reject) => {
+    resolve();
+  });
+}
