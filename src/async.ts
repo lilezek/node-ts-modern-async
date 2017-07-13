@@ -22,6 +22,13 @@ export async function immediate() {
   });
 }
 
+export async function forEach<T = any>(iterable: ArrayLike<T>, cb: (element: T) => Promise<void>) {
+  // tslint:disable-next-line:prefer-for-of
+  for (let i = 0; i < iterable.length; i++) {
+    await cb(iterable[i]);
+  }
+}
+
 export class AsyncArray<T> extends Array<T> {
 
   private consumers: Array<(v: T) => {}> = [];
