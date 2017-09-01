@@ -4,6 +4,8 @@ export async function wait(ms: number) {
   });
 }
 
+export const sleep = wait;
+
 export async function nextTick() {
   await wait(0);
 }
@@ -27,6 +29,20 @@ export async function forEach<T = any>(iterable: ArrayLike<T>, cb: (element: T) 
   for (let i = 0; i < iterable.length; i++) {
     await cb(iterable[i]);
   }
+}
+
+// tslint:disable-next-line:interface-name
+export interface ArrayMapeable<T> extends ArrayLike<T> {
+  /**
+   * Calls a defined callback function on each element of an array, and returns an array that contains the results.
+   * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
+   * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
+   */
+  map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
+}
+
+export async function forEachParallel<T = any>(iterable: (ArrayMapeable<T>), cb: (element: T) => Promise<void>) {
+  await Promise.all(iterable.map(cb));
 }
 
 export class AsyncArray<T> extends Array<T> {
